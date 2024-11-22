@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class FibonacciController {
     private final FibonacciService fibonacciService;
 
+    @GetMapping("/")
+    public String home() {
+        return "API is running!";
+    }
+
     @GetMapping("/{n}")
     public ResponseEntity<FibonacciResponseDto> getFibonacci(@PathVariable int n){
         log.info("FibonacciController - getFibonacci - Start getFibonacci method");
