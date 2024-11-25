@@ -14,6 +14,7 @@ import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import org.springframework.cache.annotation.Cacheable;
 
 @Slf4j
 @Service
@@ -25,6 +26,7 @@ public class FibonacciServiceImpl implements FibonacciService {
     private FibonacciQueryStatisticsRepository fibonacciQueryStatisticsRepository;
 
     @Override
+    @Cacheable(value = "fibonacciCache", key = "#n")
     public FibonacciResponseDto calculateFibonacci(int n) {
         FibonacciResultsEntity existingResult = fibonacciResultRepository.findFirstByN(n);
 

@@ -1,4 +1,6 @@
 spring:
+  cache:
+    type: caffeine
   profiles:
     active:
   build:
